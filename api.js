@@ -21,8 +21,10 @@ export const getMovieById = (movieId) => {
     .then((results) => results.data);
 };
 
-export const getRecommendedMovies = (movieId) => {
+export const getRecommendedMovies = (movieId, page = 1) => {
   return axios
-    .get(`${BASE_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}`)
+    .get(
+      `${BASE_URL}/movie/${movieId}/recommendations?page=${page}&api_key=${API_KEY}`
+    )
     .then((results) => results.data);
 };

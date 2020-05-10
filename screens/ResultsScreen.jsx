@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
 import MovieList from "../components/MovieList";
 import * as api from "../api";
+import PageTurner from "../components/PageTurner";
 
 const ResultsScreen = ({ route, navigation }) => {
   const { movieName, recommendationMovieId } = route.params;
@@ -14,7 +15,7 @@ const ResultsScreen = ({ route, navigation }) => {
     setIsLoading(true);
     if (recommendationMovieId !== undefined) {
       api
-        .getRecommendedMovies(recommendationMovieId)
+        .getRecommendedMovies(recommendationMovieId, page)
         .then(({ page, total_pages, results }) => {
           setMovies(results);
           setPage(page);
@@ -31,9 +32,14 @@ const ResultsScreen = ({ route, navigation }) => {
     }
   };
 
-  useEffect(() => fetchMovies(movieName, recommendationMovieId), [
+  const changePage = (direction) => {
+    setPage(page + direction);
+  };
+
+  useEffect(() => fetchMovies(movieName, recommendationMovieId, page), [
     movieName,
-    recommendationMovieId
+    recommendationMovieId,
+    page
   ]);
 
   const resultMessage =
@@ -47,7 +53,16 @@ const ResultsScreen = ({ route, navigation }) => {
       {isLoading ? (
         <Text>Loading...</Text>
       ) : (
-        <MovieList movies={movies} navigation={navigation} />
+        <>
+          <MovieList movies={movies} navigation={navigation} />
+          {totalPages > 1 && (
+            <PageTurner
+              pageTurnFunc={changePage}
+              page={page}
+              totalPages={totalPages}
+            />
+          )}
+        </>
       )}
     </View>
   );
