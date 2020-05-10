@@ -6,9 +6,8 @@ const API_KEY = Constants.manifest.extra.tmdbKey;
 
 const BASE_URL = "https://api.themoviedb.org/3";
 
-export const getFilms = (filmName, page = 1) => {
-  const encodedName = encodeURIComponent(filmName);
-  console.log(filmName, encodedName);
+export const getMovies = (movieName, page = 1) => {
+  const encodedName = encodeURIComponent(movieName);
   return axios
     .get(
       `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodedName}&page=${page}`
