@@ -46,11 +46,11 @@ const ResultsScreen = ({ route, navigation }) => {
   const resultMessage =
     recommendationMovieId !== undefined
       ? `More movies like '${movieName}'`
-      : `Results for ${movieName}`;
+      : `Results for '${movieName}'`;
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>{resultMessage}</Text>
+      <Text style={styles.resultMessage}>{resultMessage}</Text>
       {isLoading ? (
         <Text>Loading...</Text>
       ) : (
@@ -74,6 +74,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 35,
     backgroundColor: Colours.backgroundColor
+  },
+  resultMessage: {
+    textAlign: "center",
+    fontSize: 25,
+    padding: 5
   }
 });
 

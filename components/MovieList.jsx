@@ -23,7 +23,7 @@ const MovieList = ({ movies, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  scrollView: { height: "95%", margin: 5 }
+  scrollView: { height: "90%", margin: 5 }
 });
 
 export default MovieList;
