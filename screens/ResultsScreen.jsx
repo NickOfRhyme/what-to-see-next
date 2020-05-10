@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import MovieList from "../components/MovieList";
 import * as api from "../api";
 
-const ResultsScreen = ({ route }) => {
+const ResultsScreen = ({ route, navigation }) => {
   const { searchTerm } = route.params;
   const [isLoading, setIsLoading] = useState(true);
   const [movies, setMovies] = useState([]);
@@ -19,7 +19,11 @@ const ResultsScreen = ({ route }) => {
   return (
     <View>
       <Text>Results for '{searchTerm}'</Text>
-      {isLoading ? <Text>Loading...</Text> : <MovieList movies={movies} />}
+      {isLoading ? (
+        <Text>Loading...</Text>
+      ) : (
+        <MovieList movies={movies} navigation={navigation} />
+      )}
     </View>
   );
 };

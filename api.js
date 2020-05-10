@@ -14,3 +14,10 @@ export const getMovies = (movieName, page = 1) => {
     )
     .then((results) => results.data);
 };
+
+export const getMovieById = (movieId) => {
+  console.log(movieId);
+  return axios
+    .get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`)
+    .then((results) => results.data);
+};
