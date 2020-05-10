@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import MovieList from "../components/MovieList";
 import * as api from "../api";
+import Colours from "../constants/Colours";
 import PageTurner from "../components/PageTurner";
 
 const ResultsScreen = ({ route, navigation }) => {
@@ -48,7 +49,7 @@ const ResultsScreen = ({ route, navigation }) => {
       : `Results for ${movieName}`;
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text>{resultMessage}</Text>
       {isLoading ? (
         <Text>Loading...</Text>
@@ -67,5 +68,13 @@ const ResultsScreen = ({ route, navigation }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 35,
+    backgroundColor: Colours.backgroundColor
+  }
+});
 
 export default ResultsScreen;
