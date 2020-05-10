@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { SafeAreaView, Text, StyleSheet } from "react-native";
 import MovieList from "../components/MovieList";
 import * as api from "../api";
 import Colours from "../constants/Colours";
@@ -49,7 +49,7 @@ const ResultsScreen = ({ route, navigation }) => {
       : `Results for ${movieName}`;
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>{resultMessage}</Text>
       {isLoading ? (
         <Text>Loading...</Text>
@@ -65,7 +65,7 @@ const ResultsScreen = ({ route, navigation }) => {
           )}
         </>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 

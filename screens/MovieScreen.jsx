@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button } from "react-native";
+import { SafeAreaView, View, Text, Button, StyleSheet } from "react-native";
 import * as api from "../api";
 import DetailedMovieCard from "../components/DetailedMovieCard";
 
@@ -18,7 +18,7 @@ const MovieScreen = ({ route, navigation }) => {
   useEffect(() => fetchMovieDetailsById(movieId), []);
 
   return (
-    <View>
+    <SafeAreaView style={styles.container}>
       {isLoading ? (
         <Text>Loading...</Text>
       ) : (
@@ -35,8 +35,14 @@ const MovieScreen = ({ route, navigation }) => {
           />
         </>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 25
+  }
+});
 
 export default MovieScreen;

@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import MovieCard from "./MovieCard";
 
 const MovieList = ({ movies, navigation }) => {
@@ -8,12 +8,22 @@ const MovieList = ({ movies, navigation }) => {
   };
 
   return (
-    <View>
-      {movies.map((movie) => (
-        <MovieCard movie={movie} goToMovieDetails={goToMovieDetails} />
-      ))}
+    <View style={styles.scrollView}>
+      <ScrollView>
+        {movies.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            goToMovieDetails={goToMovieDetails}
+          />
+        ))}
+      </ScrollView>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  scrollView: { height: "95%", margin: 5 }
+});
 
 export default MovieList;
