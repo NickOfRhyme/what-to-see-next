@@ -18,7 +18,9 @@ const SearchScreen = ({ navigation }) => {
       />
       <Button
         title="Search"
-        onPress={() => navigation.navigate("Results", { searchTerm })}
+        onPress={() =>
+          navigation.navigate("Results", { movieName: searchTerm })
+        }
       />
     </View>
   );

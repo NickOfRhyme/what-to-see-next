@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 
 const MovieCard = ({ movie, goToMovieDetails }) => {
-  const { title, overview, release_date, vote_average, id } = movie;
+  const { title, release_date, vote_average, id } = movie;
   return (
     <View>
       <Text>{title}</Text>

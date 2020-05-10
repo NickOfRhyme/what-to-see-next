@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 const DetailedMovieCard = ({ movie }) => {
   const {
@@ -10,7 +10,8 @@ const DetailedMovieCard = ({ movie }) => {
     tagline,
     runtime,
     backdrop_path,
-    poster_path
+    poster_path,
+    id
   } = movie;
   return (
     <View>

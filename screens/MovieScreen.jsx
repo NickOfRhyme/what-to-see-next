@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import * as api from "../api";
 import DetailedMovieCard from "../components/DetailedMovieCard";
 
@@ -22,7 +22,18 @@ const MovieScreen = ({ route, navigation }) => {
       {isLoading ? (
         <Text>Loading...</Text>
       ) : (
-        <DetailedMovieCard movie={movie} />
+        <>
+          <DetailedMovieCard movie={movie} />
+          <Button
+            title="More movies like this"
+            onPress={() =>
+              navigation.navigate("Results", {
+                recommendationMovieId: movieId,
+                movieName: movie.title
+              })
+            }
+          />
+        </>
       )}
     </View>
   );
