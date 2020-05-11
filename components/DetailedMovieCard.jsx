@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
+import { Card, Rating } from "react-native-elements";
 
 const DetailedMovieCard = ({ movie }) => {
   const {
@@ -8,22 +9,47 @@ const DetailedMovieCard = ({ movie }) => {
     release_date,
     vote_average,
     tagline,
-    runtime,
-    backdrop_path,
-    poster_path,
-    id
+    backdrop_path
   } = movie;
+
+  const year = release_date.split("-")[0];
+
   return (
-    <View>
-      <Text>{title}</Text>
-      <Text>{release_date}</Text>
-      <Text>{vote_average}</Text>
-      <Text>'{tagline}'</Text>
-      <Text>{overview}</Text>
-    </View>
+    <Card
+      title={`${title} (${year})`}
+      image={{
+        uri: `https://image.tmdb.org/t/p/w500/${backdrop_path}`
+      }}
+      imageStyle={styles.image}
+      featuredTitle={tagline && `'${tagline}'`}
+      featuredTitleStyle={styles.tagline}
+    >
+      <Rating
+        type={"star"}
+        ratingCount={10}
+        startingValue={vote_average}
+        style={styles.rating}
+        readonly
+      />
+      <Text style={styles.overview}>{overview}</Text>
+    </Card>
   );
 };
 
 export default DetailedMovieCard;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  image: {
+    height: 400
+  },
+  tagline: {
+    fontStyle: "italic"
+  },
+  rating: {
+    margin: 10
+  },
+  overview: {
+    fontSize: 18,
+    margin: 15
+  }
+});

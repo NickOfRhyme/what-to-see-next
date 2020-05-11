@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet } from "react-native";
 import { ListItem } from "react-native-elements";
 
 const MovieCard = ({ movie, goToMovieDetails }) => {
@@ -10,6 +10,8 @@ const MovieCard = ({ movie, goToMovieDetails }) => {
       title={title}
       subtitle={year}
       rightTitle={vote_average ? vote_average : "no ratings"}
+      topDivider
+      bottomDivider
       onPress={() => goToMovieDetails(id)}
     ></ListItem>
   );

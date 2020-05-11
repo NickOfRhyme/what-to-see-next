@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, Text, StyleSheet } from "react-native";
+import { SafeAreaView, Text, View, StyleSheet } from "react-native";
 import MovieList from "../components/MovieList";
 import * as api from "../api";
 import Colours from "../constants/Colours";
@@ -52,7 +52,9 @@ const ResultsScreen = ({ route, navigation }) => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.resultMessage}>{resultMessage}</Text>
       {isLoading ? (
-        <Text>Loading...</Text>
+        <View style={styles.loadingMessageContainer}>
+          <Text style={styles.loadingMessage}>Loading...</Text>
+        </View>
       ) : (
         <>
           <MovieList movies={movies} navigation={navigation} />
@@ -73,7 +75,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 35,
-    backgroundColor: Colours.backgroundColor
+    backgroundColor: Colours.backgroundColour
+  },
+  loadingMessageContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%"
+  },
+  loadingMessage: {
+    fontSize: 30,
+    color: Colours.primaryColour
   },
   resultMessage: {
     textAlign: "center",

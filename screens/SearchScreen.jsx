@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input, Button } from "react-native-elements";
 import Colours from "../constants/Colours";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
 const SearchScreen = ({ navigation }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,10 +16,11 @@ const SearchScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.searchText}>What to see next?</Text>
       <Input
         inputStyle={styles.textInput}
         containerStyle={styles.textInputContainer}
-        placeholder="Search for a movie"
+        placeholder="Search for a movie that you like"
         value={searchTerm}
         onChangeText={handleInputChange}
         onSubmitEditing={goToResults}
@@ -43,6 +44,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colours.backgroundColour,
     justifyContent: "center",
     alignItems: "center"
+  },
+  searchText: {
+    color: Colours.primaryColour,
+    fontSize: 40,
+    fontWeight: "bold",
+    fontStyle: "italic"
   },
   textInput: {
     color: Colours.primaryColour

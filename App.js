@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import SearchScreen from "./screens/SearchScreen";
@@ -12,9 +11,17 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen
+          name="Search"
+          component={SearchScreen}
+          options={{ title: "Find a movie" }}
+        />
         <Stack.Screen name="Results" component={ResultsScreen} />
-        <Stack.Screen name="Movie" component={MovieScreen} />
+        <Stack.Screen
+          name="Movie"
+          component={MovieScreen}
+          options={{ title: "Movie details" }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
